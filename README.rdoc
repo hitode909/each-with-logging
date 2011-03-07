@@ -1,16 +1,42 @@
 = each-with-logging
 
-Description goes here.
+each_with_logging will warn caller, index and length.
 
-== Contributing to each-with-logging
- 
-* Check out the latest master to make sure the feature hasn't been implemented or the bug hasn't been fixed yet
-* Check out the issue tracker to make sure someone already hasn't requested it and/or contributed it
-* Fork the project
-* Start a feature/bugfix branch
-* Commit and push until you are happy with your contribution
-* Make sure to add tests for it. This is important so I don't break it in a future version unintentionally.
-* Please try not to mess with the Rakefile, version, or history. If you want to have your own version, or is otherwise necessary, that is fine, but please isolate to its own commit so I can cherry-pick around it.
+    require 'each-with-logging'
+    
+    [1,2,3,4].each_with_logging {|i|
+      p i
+    }
+    
+    # m.rb:3:in `<main>' 1 / 4
+    # 1
+    # m.rb:3:in `<main>' 2 / 4
+    # 2
+    # m.rb:3:in `<main>' 3 / 4
+    # 3
+    # m.rb:3:in `<main>' 4 / 4
+    # 4
+
+You can use each_with_logging with Logger.
+
+    require 'each-with-logging'
+    require 'logger'
+    logger = Logger.new(STDOUT)
+    
+    [1,2,3,4].each_with_logging(logger) {|i|
+      p i
+    }
+    
+    # D, [2011-03-07T10:55:48.014898 #92103] DEBUG -- : l.rb:5:in `<main>' 1 / 4
+    # 1
+    # D, [2011-03-07T10:55:48.015350 #92103] DEBUG -- : l.rb:5:in `<main>' 2 / 4
+    # 2
+    # D, [2011-03-07T10:55:48.015722 #92103] DEBUG -- : l.rb:5:in `<main>' 3 / 4
+    # 3
+    # D, [2011-03-07T10:55:48.015977 #92103] DEBUG -- : l.rb:5:in `<main>' 4 / 4
+    # 4
+
+
 
 == Copyright
 
