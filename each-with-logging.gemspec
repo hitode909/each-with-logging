@@ -20,10 +20,12 @@ Gem::Specification.new do |s|
     ".document",
     ".rspec",
     "Gemfile",
+    "Gemfile.lock",
     "LICENSE.txt",
     "README.rdoc",
     "Rakefile",
     "VERSION",
+    "each-with-logging.gemspec",
     "lib/each-with-logging.rb",
     "spec/each-with-logging_spec.rb",
     "spec/spec_helper.rb"
